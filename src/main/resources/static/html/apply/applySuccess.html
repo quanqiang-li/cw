@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>提交成功</title>
+	<link rel='stylesheet' href='../../css/reset.css'>
+	<link rel="stylesheet" href="../../js/libs/bootstrap/bootstrap.css" />
+	<link rel='stylesheet' href='../../css/style.css'>
+	<link rel='stylesheet' href='../../css/common.css'>
+</head>
+<body>
+	<div class="wrap">
+		<div id="head"></div>
+		<div id="navs"></div>
+		<div class="main apply-sa">	
+			<div class="apply">
+				<div class="apply-main col-md-12 col-lg-8">
+					<dl class="apply-save">
+						<dt><img src="/static/img/icon_save.png" alt=""></dt>
+						<dd>
+							<div class="apply-list">
+								<h3>申请资料提交成功</h3>
+								<p><span class="times">60</span>秒后自动转到贷款列表页面，查看贷款申请进度；<a href="/static/html/personalCenter/loan/loan.html">马上进入我的贷款</a><a href="/static/html/index.html">返回网站首页</a></p>
+							</div>									
+							<!--<div class="apply-cont">
+								<h4><a href="javascript:;">继续完善></a></h4>
+								<ul>
+									 <li class="lf"><span>申请贷款额度：</span><b class="col-red">100万</b></li>
+									<li class="lf"><span>申请贷款期限：</span><b class="col-red">36个月</b></li>
+									<li><span>申请办理银行：</span><em>恒丰银行</em></li> 
+								</ul>
+							</div>-->
+						</dd>
+						<div style="clear: both;"></div>
+					</dl>	
+				</div>
+			</div>				
+		</div>
+		<div id="foot" class="footer-bot"></div>
+	</div>
+	<script type="text/javascript" src='../../js/libs/jquery-1.8.3.min.js'></script>
+	<script type="text/javascript" src="../../js/serve.js"></script>
+	<script>
+	var count = 60,
+		applyNo = GetQueryString("applyNo");
+	countdown = setInterval(CountDown, 1000);
+	 function CountDown() {
+           if (count == 0) {
+               //clearInterval(countdown);
+               location.href = "/static/html/personalCenter/loan/loan.html";
+           }else{
+           	count--;
+           }            
+           $(".times").html(count);
+       }
+	function GetQueryString(name){
+		var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+	    var r = window.location.search.substr(1).match(reg);
+	    if(r!=null)return  unescape(r[2]); return null;
+	}
+	applyComputing(GetQueryString("applyNo"));
+	/* 标准风控计算 */
+	function applyComputing(){
+		$.ajax({
+			url: "/apply/standardAdmissionComputing",
+			type: "post",
+			data: {
+				applyNo:applyNo
+			},
+			dataType: "json",
+			cache:false,
+			success : function(data){
+				//console.log(data);
+				if(data.errorCode == "0"){
+					
+				}else if(data.errorCode == "2010"){
+					$.jBox.closeTip();
+					$.jBox.error("登录信息已过期，请重新登录","提示");
+					setTimeout(function(){
+						location.href = "/static/html/index.html";
+						window.localStorage.clear();
+					},1000)
+				}else{
+					$.jBox.tip(data.errorString);
+				}
+			},
+			error: function (data) {
+				$.jBox.tip ("服务器异常或请求超时，请稍后重试", "提示");
+            }
+		})
+	}
+	</script>
+</body>
+</html>

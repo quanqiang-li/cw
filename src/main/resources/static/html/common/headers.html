@@ -1,0 +1,166 @@
+<!--盒子布局开始-->
+<div class="header head">
+    <div class="head-list col-md-12 col-lg-8">
+        <div class="head-left left">
+            <!-- <a href="http://www.i-xinnuo.com/cms/index">爱信诺征信</a> -->
+            <a href="http://www.aisino.com/" target="_blank">航天信息官网</a>
+            <a href="http://asbinstall.i-xinnuo.com:8888/installISR.exe" class="down">爱税宝下载</a>
+        </div>
+        <div class="head-right right login" id="login">
+            <a href="javascript:;" id="sigin">登录</a>
+            <a href="javascript:;" class="zcbtn" id="zcbtn">注册</a>
+            <!-- <a href="javascript:;" class="sign" id="glsigin">管理员登录</a> -->
+            <div class="head-box">
+            	<div class="login-box tips" id="login-box">
+	            	<div class="arr">
+					    <em></em>
+					</div>
+	            	<ul>
+	            		<li><input type="text" class="inpa inma" id="sign_user" placeholder="用户名"/></li>
+	            		<li><input type="password" class="inpa" id="sign_pass" placeholder="密码"/></li>
+	            		<!-- <li id="slider2" class="slider"></li> -->
+	            		<div id="captcha" style="position: relative"></div>
+	            		<li style="display:none;"><input type="text" class="inpa incode" id="sign_code" placeholder="验证码"/><span class="code_img"><img id="codeImg" alt="验证码" src="/static/img/close_01.png" data-id="000"></span></li>
+	            		<li><input type="button" class="signbtn" id="sign_in" value="登录"/></li>
+	            		<li class="align-rt"><a href="javascript:;" class="right" id="wjbtn">忘记密码？</a></li>
+	            	</ul>
+	            </div>
+            </div>
+        </div>
+        <div class="user right info" id="user" style="display:none;position: relative;">
+        	<div id="username" class="left"></div>
+        	<div class="ulDiv ulDiv-ent">  
+			    <ul id="entlist">  
+			      <li>zxczxczxc</li>  
+			    </ul>  
+			</div>
+	       	<div id="logout" class="left">注销</div>
+        </div>	
+    </div>
+     <div class="enterprise" style="display:none;">
+    	<h3 class="box-title">选择登录企业</h3>
+    	<ul id="entList">
+    		<li>企业群企业群企业群企业群</li>
+    	</ul>
+    	<div class="box-btn">
+    		<a href="javascript:;" id="entOk">确定</a>
+    	</div>
+    </div> 
+    <div class="shade">
+		<div class="mask"></div>
+		<div class="bomb">
+			<div id="tabmax"  style="display: none; ">
+				<h3 class="box-title">立即注册<i class="fa fa-times right close"></i></h3>
+				<div class="tabmax">
+					<div class="login-tips">
+						<div class="hint hint-1-2 hint-2-2" id="errorMsg_div_2" style="display: none; ">
+							<p id="errorMsg_p_2"></p>
+						</div>
+					</div>	
+					<div class="cs-input">
+						<input name="" type="text" class="cs-input1" placeholder="请输入企业名称"
+							id="entName" autocomplete="off">
+					</div>
+					<div class="cs-input">
+						<input name="" type="text" class="cs-input1" placeholder="请输入企业统一社会信用代码"
+							id="shxydm" autocomplete="off">
+					</div>
+					<div class="cs-input">
+						<input name="" type="text" class="cs-input1" placeholder="请输入真实姓名"
+							id="realName" autocomplete="off">
+					</div>
+					<div class="cs-input">
+						<input name="" type="password" class="cs-input1"
+							placeholder="请设置登录密码" id="password_2" autocomplete="off">
+					</div>
+					<div class="cs-input">
+						<input name="" type="password" class="cs-input1"
+							placeholder="请再次输入密码" id="rePassword_2" autocomplete="off">
+					</div>
+					<div class="cs-input">
+						<input name="" type="text" class="cs-input1" placeholder="请输入手机号"
+							id="phonenumber_2" autocomplete="off">
+					</div>
+					<div class="cs-input">
+						<span class="verification1 left"> <input name=""
+							type="text" class="cs-input2" placeholder="请输入手机验证码" autocomplete="off" id="verCode_2">
+						</span>
+						<div class="slip-butt right">
+							<input class="slip-yzm signbtn" type="button" value="获取验证码" id="send_2" style="background:#babab2;"/>
+						</div> 
+					</div>
+					<!-- <div class="cs-input">
+						<span class="verification1 left"> <input name=""
+							type="text" class="cs-input2" placeholder="请输入验证码" id="code_2">
+						</span>
+						<div class="verification right">
+							<img id="captcha_img_2" src="/static/img/close_01.png" />
+						</div>
+					</div> -->
+					<div>
+						<!-- <div id="slider3" class="slider"></div> -->
+						<div id="captcha2" style="position: relative"></div>
+					</div>
+					<div class="psw">
+						<span class="bear-roido left"> <input type="checkbox"
+							name="CheckboxGroup1" value="" id="checkboxGroup_2"
+							style="margin: 0px;"></span> <span class="bear left">同意并遵守<a href="/html/agreement.html" target="_Blank">《用户协议和隐私政策》</a></span>
+					</div>
+				</div>	
+				<div class="cs-buutonfh">
+					<a href="javascript:void(0)" onClick="registered()">注&nbsp;&nbsp;册</a>
+				</div>
+			</div>
+			<!-------------已上是会员注册部分--------------->				
+			<div id="tabmax_one" style="display: none; ">
+				<h3 class="box-title">忘记密码<i class="fa fa-times right close"></i></h3>
+				<div class="tabmax">
+					<div class="login-tips">
+						<div class="hint hint-1-2 hint-2-2" id="errorMsg_div_3" style="display: none; ">
+							<p id="errorMsg_p_3"></p>
+						</div>
+					</div>	
+					<div class="cs-input">
+						<input name="" type="text" class="cs-input1" placeholder="请输入手机号"
+							id="phonenumber_3" autocomplete="off">
+					</div>
+					<div class="cs-input">
+						<input name="" type="password" class="cs-input1"
+							placeholder="请输入密码" id="password_3" autocomplete="off">
+					</div>
+					<div class="cs-input">
+						<input name="" type="password" class="cs-input1"
+							placeholder="请输入确认密码" id="rePassword_3" autocomplete="off">
+					</div>
+					<div class="cs-input">
+						<span class="verification1 left"> <input name=""
+							type="text" class="cs-input2" autocomplete="off" placeholder="请输入手机验证码" id="verCode_3">
+						</span>
+						<div class="slip-butt right">
+							<input class="slip-yzm" type="button" value="获取验证码" id="send_3" style="background:#babab2;"/>
+						</div>
+					</div>
+					<!-- <div class="cs-input">
+						<span class="verification1 left"> <input name=""
+							type="text" class="cs-input2" placeholder="请输入验证码" id="code_3">
+						</span>
+		
+						<div class="verification right">
+							<img id="captcha_img_3" src="/static/img/close_01.png" />
+						</div>
+					</div> -->
+					<div><!--  class="cs-input" -->
+						<!-- <div id="slider4" class="slider"></div> -->
+						<div id="captcha3" style="position: relative;"></div>
+					</div>
+				</div>
+				<div class="cs-buutonfh">
+					<a href="javascript:void(0)" onClick="reSetPassWord()">重&nbsp;&nbsp;置</a>
+					<div style="clear:both"></div> 
+				</div>
+			</div>
+			<!-- 重置密码 -->
+		</div>	
+	</div>             
+</div>
+<!---已上是head部分-->

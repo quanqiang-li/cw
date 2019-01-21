@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>产品申请</title>
+	<link rel='stylesheet' href='../../css/reset.css'>
+	<link rel="stylesheet" href="../../js/libs/bootstrap/bootstrap.css" />
+	<link rel='stylesheet' href='../../css/style.css'>
+	<link rel='stylesheet' href='../../css/common.css'>
+	<style>
+		#hbg,#hbg1{
+			position: fixed;
+			z-index:998;
+			top:0;
+			bottom:0;
+			left:0;
+			right:0;
+			background:rgba(0,0,0,0.3);
+		}
+		
+		#joinDialog,#joinovet{
+			position: absolute;
+			overflow: hidden;
+			z-index:999;
+			left: 50%;
+    		margin-left: -500px;
+		}
+		.declaration_okly2 ol li{display: list-item; list-style-type: decimal;}
+		.declaration_okly2 ul li{display: list-item; list-style-type: disc;}
+		 
+		.code{height: 40px;}
+		h4.modal-title{font-size: 16;}
+		label.item-title{font-size: 14;}
+		img.codeimg{vertical-align: middle;}
+		#checkBox-error{top: 21px;left:0;position: absolute;}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<div id="head"></div>
+		<div id="navs"></div>
+		<div class="main bg-f5">	
+			<div class="apply">
+				<div class="prod-list apply-prod ">
+					<dl id="prodList">
+					</dl>
+					<div style="clear: both;"></div>
+				</div>	
+				<div class="apply-form col-md-12 col-lg-8">
+					<div class="apply-lf">
+						<div class="apply-title">
+							<h3 class="lf">申请信息</h3>
+						</div>
+						<div action="" class="apply-from-list" id="applyFrom">
+							<ul id="myTab" class="nav nav-tabs tab-nav">
+								<li class="active"><a href="#rzrxx" data-toggle="tab" id="rzrtab">融资人信息</a></li>
+								<li><a href="javascript:;" id="rztab">融资信息</a></li>
+								<li><a href="javascript:;" id="pjtab">票据信息</a></li>
+								<li><a href="javascript:;" id="ysztab">合同信息相关</a></li>
+							</ul>
+							<div id="myTabContent" class="tab-content">
+								<!-- 融资人信息 -->
+								<div class="tab-pane fade in active" id="rzrxx">
+									<form class="form-horizontal col-sm-8 col-md-offset-2" id="tcrxxform">
+										<div class="form-group h-35">
+									    	<label for="etrName" class="col-sm-4 control-label">公司名称<span class="lab-tip">*</span></label>
+									    	<div class="col-sm-7">
+									      		<input type="text" class="form-control" id="etrName" placeholder="请输入公司名称">
+									    	</div>
+									  	</div>
+									  	<div class="form-group h-35">
+									    	<label for="unionCode" class="col-sm-4 control-label">统一社会信用代码<span class="lab-tip">*</span></label>
+									    	<div class="col-sm-7">
+									      		<input type="text" class="form-control" id="unionCode" placeholder="请输入统一社会信用代码">
+									    	</div>
+									  	</div>
+									  	<div class="form-group h-35">
+									    	<label for="contactPerson" class="col-sm-4 control-label">融资人名称<span class="lab-tip">*</span></label>
+									    	<div class="col-sm-7">
+									      		<input type="text" class="form-control" id="contactPerson" placeholder="请输入贴出人名称">
+									    	</div>
+									  	</div>
+									  	<div class="form-group h-35">
+									    	<label for="contactMobile" class="col-sm-4 control-label">融资人联系电话<span class="lab-tip">*</span></label>
+									    	<div class="col-sm-7">
+									      		<input type="text" class="form-control" id="contactMobile" placeholder="请输入贴出人联系电话">
+									    	</div>
+									  	</div>
+									  	<div class="form-group h-35">
+									    	<label for="mcode" class="col-sm-4 control-label">营销推荐代码</label>
+									    	<div class="col-sm-7">
+									      		<input type="text" class="form-control" id="mcode" name="mcode" placeholder="请输入营销推荐代码">
+									    	</div>
+									  	</div>
+									  	<div class="form-group" style="text-align:center;">
+									      	<label for="checkBox" style="position: relative;">
+									      		<input id="checkBox" name="checkBox" type="checkbox" >
+									      		我阅读并同意<a href="javascript:;"  onclick="apply.joindh();">《企业信用承诺联盟及数据授权协议》</a>
+									      	</label>
+									    </div>
+									  	<button type="button" class="btn btn-primary btn-lg col-sm-4 col-md-offset-4" id="rzrxxBtn">下一步</button>
+									</form>
+                					<div style="clear:both"></div>
+								</div>
+								<!-- 融资信息 -->
+								<div class="tab-pane fade in" id="rzxx">
+									<form class="form-horizontal col-sm-8 col-md-offset-2" id="rzxxform">
+										<div class="form-group">
+									    	<label for="gbjg" class="col-sm-4 control-label">公办理银行/机构<span class="lab-tip">*</span></label>
+									    	<div class="col-sm-7">
+									      		<input type="text" class="form-control" id="gbjg" placeholder="请输入公办理银行/机构">
+									    	</div>
+									  	</div>
+									  	<div class="form-group">
+									    	<label for="type" class="col-sm-4 control-label">融资类型<span class="lab-tip">*</span></label>
+									    	<div class="col-sm-7">
+									      		<input type="text" class="form-control" id="type" placeholder="请输入融资类型">
+									    	</div>
+									  	</div>
+									  	<div class="form-group">
+									    	<label for="loanAmount" class="col-sm-4 control-label">意向融资金额<span class="lab-tip">*</span></label>
+									    	<div class="col-sm-7">
+									      		<input type="text" class="form-control" id="loanAmount" name="loanAmount" placeholder="请输入意向融资金额">
+									    	</div>
+									    	<span class="posit-tip">元</span>
+									  	</div>
+									  	<div class="form-group">
+									    	<label for="loanTerm" class="col-sm-4 control-label">意向融资期限<span class="lab-tip">*</span></label>
+									    	<div class="col-sm-7">
+									      		<input type="text" class="form-control" id="loanTerm" name="loanTerm" placeholder="请输入意向融资期限">
+									    	</div>
+									    	<span class="posit-tip">个月</span>
+									  	</div>
+									  	<div class="form-group">
+									    	<label for="loanRate" class="col-sm-4 control-label">意向融资利率上限</label>
+									    	<div class="col-sm-7">
+									      		<input type="text" class="form-control" id="loanRate" name="loanRate" placeholder="请输入意向融资利率上限">
+									    	</div>
+									  	</div>
+									  	<div class="form-group">
+									    	<label for="repayWay" class="col-sm-4 control-label">还款方式<span class="lab-tip">*</span></label>
+									    	<div class="col-sm-7">
+									      		<input type="text" class="form-control" id="repayWay" name="repayWay" placeholder="请输入还款方式">
+									    	</div>
+									  	</div>
+									  	<div class="form-group">
+									    	<label for="repayAccountNo" class="col-sm-4 control-label">账号<span class="lab-tip">*</span></label>
+									    	<div class="col-sm-7">
+									      		<input type="text" class="form-control" id="repayAccountNo" name="repayAccountNo" placeholder="请输入账号">
+									    	</div>
+									  	</div>
+									  	<div class="form-group">
+									    	<label for="repayAccountName" class="col-sm-4 control-label">开户名<span class="lab-tip">*</span></label>
+									    	<div class="col-sm-7">
+									      		<input type="text" class="form-control" id="repayAccountName" name="repayAccountName" placeholder="请输入开户名">
+									    	</div>
+									  	</div>
+									  	<div class="form-group">
+									    	<label for="repayAccountBank" class="col-sm-4 control-label">开户行<span class="lab-tip">*</span></label>
+									    	<div class="col-sm-7">
+									      		<input type="text" class="form-control" id="repayAccountBank" name="repayAccountBank" placeholder="请输入开户行">
+									    	</div>
+									  	</div>
+									  	<div class="form-group">
+									    	<label for="loanDesc" class="col-sm-4 control-label">融资需求描述</label>
+									    	<div class="col-sm-7">
+									      		<textarea class="form-control" rows="3" name="loanDesc" id="loanDesc"></textarea>
+									    	</div>
+									  	</div>
+									  	<div class="form-group">
+									  		<button type="button" class="btn btn-primary btn-lg col-sm-4 col-md-offset-2" id="prevOne">上一步</button>
+									  		<button type="button" class="btn btn-primary btn-lg col-sm-4 col-md-offset-2" id="rzxxSubmit">下一步</button>
+									  	</div>
+									</form>
+                					<div style="clear:both"></div>
+								</div>
+								<!-- 票据信息 -->
+								<div class="tab-pane fade in" id="pjxx">
+									<form class="form-horizontal col-sm-8 col-md-offset-2" id="pjxxform">
+										<div class="form-group">
+											<div class="col-sm-5 text-center lineh-150 border cuor" id="front">
+												上传票据正面
+											</div>
+											<div class="col-sm-5 right text-center lineh-150 border cuor" id="back">
+												上传票据背面
+											</div>
+										</div>
+										<div class="form-group">
+											<div class="col-sm-5">
+												<input class="col-sm-12" id="imgFront" name="imgFront" style='opacity: 0;height:0px;'/>
+												<input class="col-sm-12" type="file" id="upFront" name="upFront" style='opacity: 0;height:0px;'/>
+											</div>
+											<div class="col-sm-5 right">
+												<input class="col-sm-12" id="imgBack" name="imgBack" style='opacity: 0;height:0px;'/>
+												<input class="col-sm-12" type="file" id="upBack" name="upBack" style='opacity: 0;height:0px;'/>
+											</div>
+										</div>
+										<div class="form-group">
+									    	<label for="ticketNo" class="col-sm-4 control-label">电子票据号码<span class="lab-tip">*</span></label>
+									    	<div class="col-sm-7">
+									      		<input type="text" class="form-control" id="ticketNo" name="ticketNo" placeholder="请输入电子票据号码">
+									    	</div>
+									  	</div>
+									  	<div class="form-group">
+									    	<label for="ticketType" class="col-sm-4 control-label">票据种类<span class="lab-tip">*</span></label>
+									    	<div class="col-sm-7">
+									      		<select class="form-control" id="ticketType" name="ticketType"></select>
+									    	</div>
+									  	</div>
+									  	<div class="form-group">
+									    	<label for="ticketAmount" class="col-sm-4 control-label">票据金额<span class="lab-tip">*</span></label>
+									    	<div class="col-sm-7">
+									      		<input type="text" class="form-control" id="ticketAmount" name="ticketAmount" placeholder="请输入票据金额">
+									    	</div>
+									    	<span class="posit-tip">元</span>
+									  	</div>
+									  	<div class="form-group">
+									    	<label for="ticketDueDate" class="col-sm-4 control-label">票据到期日<span class="lab-tip">*</span></label>
+									    	<div class="col-sm-7">
+									      		<input type="text" class="form-control" id="ticketDueDate" name="ticketDueDate" placeholder="请选择票据到期日" onFocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd'})" autocomplete="off">
+									    	</div>
+									  	</div>
+									  	<div class="form-group">
+									    	<label for="discountDeposit" class="col-sm-4 control-label">贴现保证金<span class="lab-tip">*</span></label>
+									    	<div class="col-sm-7">
+									      		<input type="text" class="form-control" id="discountDeposit" name="discountDeposit" placeholder="请输入贴现保证金">
+									    	</div>
+									    	<span class="posit-tip">元</span>
+									  	</div>
+									  	<div class="form-group">
+									    	<label for="promiseAgencyName" class="col-sm-4 control-label">承兑机构全称<span class="lab-tip">*</span></label>
+									    	<div class="col-sm-7">
+									      		<input type="type" class="form-control" id="promiseAgencyName" name="promiseAgencyName" placeholder="请输入承兑机构全称">
+									    	</div>
+									  	</div>
+									  	<div class="form-group">
+									    	<label for="promiseAgencyType" class="col-sm-4 control-label">承兑机构类型<span class="lab-tip">*</span></label>
+									    	<div class="col-sm-7" id="agencyType">
+									      		<!-- <select class="form-control" id="promiseAgencyType"></select> -->
+									    	</div>
+									  	</div>
+									  	<div class="form-group">
+									    	<label for="etrName" class="col-sm-4 control-label">是否已背书<span class="lab-tip">*</span></label>
+									    	<div class="col-sm-7">
+									      		<select class="form-control" id="endorsement" name="endorsement">
+									      			<option value="">请选择是否已背书</option>
+									      			<option value="0">否</option>
+									      			<option value="1">是</option>
+									      		</select>
+									    	</div>
+									  	</div>
+									  	<div class="form-group" id="pjbsr" style="display:none;">
+									    	<label for="" class="col-sm-4 control-label">票据背书人</label>
+									    	<div class="col-sm-7">
+									    		<a href="javascript:;" class="font-18" id="addTr"><i class="fa fa-plus-circle"></i></a>
+									      		<a href="javascript:;" class="font-18" id="minusTr"><i class="fa fa-minus-circle"></i></a>
+									      		<table class="datatable table table-striped table-bordered table-hover">
+									      			<thead><td>背书人企业名称</td><td>被背书人企业名称</td></thead>
+									      			<tbody id="bsrlist">
+									      				<tr>
+									      					<td><input class="form-control" type="text" name="Endorser"/></td>
+									      					<td><input class="form-control" type="text" name="Endorsed"/></td>
+									      				</tr>
+									      			</tbody>
+									      		</table>
+									    	</div>
+									  	</div>
+									  	<div class="form-group">
+									    	<label for="loanDescpj" class="col-sm-4 control-label">备注</label>
+									    	<div class="col-sm-7">
+									      		<textarea class="form-control" rows="3" name="loanDescpj" id="loanDescpj"></textarea>
+									    	</div>
+									  	</div>
+									  	<div class="form-group">
+									  		<button type="button" class="btn btn-primary btn-lg col-sm-4 col-md-offset-2" id="prevPJ">上一步</button>
+									  		<button type="button" class="btn btn-primary btn-lg col-sm-4 col-md-offset-2" id="pjxxSubmit">下一步</button>
+									  	</div>
+									</form>
+                					<div style="clear:both"></div>
+								</div>
+								<!-- 合同信息相关	 -->
+								<div class="tab-pane fade in" id="yszxx">
+									<form class="form-horizontal col-sm-8 col-md-offset-2" id="yszform" enctype="multipart/form-data">
+										<div class="form-group">
+									    	<label for="buyerName" class="col-sm-4 control-label">购方名称<span class="lab-tip">*</span></label>
+									    	<div class="col-sm-7">
+									      		<input type="text" class="form-control" id="buyerName" name="buyerName" placeholder="请输入购方名称">
+									    	</div>
+									  	</div>
+									  	<div class="form-group">
+									    	<label for="buyerUnionCode" class="col-sm-4 control-label">购方统一社会信用代码<span class="lab-tip">*</span></label>
+									    	<div class="col-sm-7">
+									      		<input type="text" class="form-control" id="buyerUnionCode" name="buyerUnionCode" placeholder="请输入购方统一社会信用代码">
+									    	</div>
+									  	</div>
+									  	<div class="form-group">
+									    	<label for="buyerContactName" class="col-sm-4 control-label">购方联系人<span class="lab-tip">*</span></label>
+									    	<div class="col-sm-7">
+									      		<input type="text" class="form-control" id="buyerContactName" name="buyerContactName" placeholder="请输入购方联系人">
+									    	</div>
+									  	</div>
+									  	<div class="form-group">
+									    	<label for="buyerContactMobile" class="col-sm-4 control-label">购方手机号<span class="lab-tip">*</span></label>
+									    	<div class="col-sm-7">
+									      		<input type="text" class="form-control" id="buyerContactMobile" name="buyerContactMobile" placeholder="请输入购方手机号">
+									    	</div>
+									  	</div>
+									  	<div class="form-group">
+									    	<label for="contractNo" class="col-sm-4 control-label">贸易合同号<span class="lab-tip">*</span></label>
+									    	<div class="col-sm-7">
+									      		<input type="text" class="form-control" id="contractNo" name="contractNo" placeholder="请输入应收账款合同号">
+									    	</div>
+									  	</div>
+									  	<div class="form-group">
+									    	<label for="contractAmount" class="col-sm-4 control-label">贸易合同金额<span class="lab-tip">*</span></label>
+									    	<div class="col-sm-7">
+									      		<input type="text" class="form-control" id="contractAmount" name="contractAmount" placeholder="请输入应收账款金额">
+									    	</div>
+									    	<span class="posit-tip">元</span>
+									  	</div>
+									  	<div class="form-group">
+									    	<label for="contractGoods" class="col-sm-4 control-label">贸易合同货物名称<span class="lab-tip">*</span></label>
+									    	<div class="col-sm-7">
+									      		<input type="text" class="form-control" id="contractGoods" name="contractGoods" placeholder="请输入合同货物名称">
+									    	</div>
+									    	<span class="posit-goods">多个货物请输入;分隔</span>
+									  	</div>
+									  	<div class="form-group">
+									    	<label for="contractTerm" class="col-sm-4 control-label">贸易合同期限<span class="lab-tip">*</span></label>
+									    	<div class="col-sm-7">
+									      		<input type="text" class="form-control" id="contractTerm" name="contractTerm" placeholder="请输入合同期限">
+									    	</div>
+									  	</div>
+									  	
+									  	<div class="form-group">
+									    	<label for="contractSignDate" class="col-sm-4 control-label">贸易合同签署日期<span class="lab-tip">*</span></label>
+									    	<div class="col-sm-7">
+									      		<input type="text" class="form-control" id="contractSignDate" name="contractSignDate" placeholder="请选择合同签署日期" onFocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd',maxDate:'%y-%M-{%d}'})" autocomplete="off">
+									    	</div>
+									  	</div>
+									  	<div class="form-group">
+									    	<label for="contractPayDate" class="col-sm-4 control-label">贸易合同付款日期<span class="lab-tip">*</span></label>
+									    	<div class="col-sm-7">
+									      		<input type="text" class="form-control" id="contractPayDate" name="contractPayDate" placeholder="请选择合同付款日期" onFocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd',maxDate:'%y-%M-{%d}'})" autocomplete="off">
+									    	</div>
+									  	</div>
+									  	<div class="form-group">
+									    	<label for="contractInvoiceDate" class="col-sm-4 control-label">发票开具日期<span class="lab-tip">*</span></label>
+									    	<div class="col-sm-7">
+									      		<input type="text" class="form-control" id="contractInvoiceDate" name="contractInvoiceDate" placeholder="请选择发票开具日期" onFocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd',maxDate:'%y-%M-{%d}'})" autocomplete="off">
+									    	</div>
+									  	</div>
+									  	<div class="form-group">
+									    	<label for="htdyfp" class="col-sm-4 control-label">合同对应发票<span class="lab-tip">*</span></label>
+									    	<div class="col-sm-7">
+									      		<button type="button" class="btn btn-primary btn-sm col-sm-2" id="invoiceChoose">选择</button>
+									    	</div>
+									    	
+									  	</div>
+									  	<div class="form-group" id="htfp" style="display:none;">
+									  		<div class="newly-bot col-sm-12"  style=" overflow-y:auto; max-height:300px;">
+									    		<div class="table-responsive">
+										    		<table class="datatable table table-striped table-bordered table-hover">
+													  	<thead>
+													  		<th>发票号码</th>
+													  		<th>发票代码</th>
+													  		<th>开票金额</th>
+													  		<th>开票日期</th>
+													  		<th>商品名称</th>
+													  		<th>匹配度</th>
+													  	</thead>
+													  	<tbody id="rz-table">
+													  		<!-- <tr>
+													  			<td>1</td><td>爱信诺征信有限公司</td><td>132465789</td><td>企业</td><td>182.182.182</td><td>--</td><td>--</td><td>2018-02-04 14:00:00</td>
+													  		</tr> -->
+													  	</tbody>
+													</table>
+												</div>
+									    	</div>
+									  	</div>
+									  	<div class="form-group">
+									    	<label for="htfj" class="col-sm-4 control-label">贸易合同附件<span class="lab-tip">*</span></label>
+									    	<div class="col-sm-7">
+									    		<div id="htfjCont"></div>
+									      		<button type="button" class="btn btn-primary btn-sm col-sm-2" id="uphtfj">上传</button>
+									    		<input type="file" class="form-control" id="htfj" name="htfj" style="display:none;" placeholder="请选择合同附件">
+									    	</div>
+									  	</div>
+									  	<div class="form-group">
+									    	<label for="fpfj" class="col-sm-4 control-label">发票附件</label>
+									    	<div class="col-sm-7">
+									    		<div id="fpfjCont"></div>
+									      		<input type="file" class="form-control" id="fpfj" name="fpfj" style="display:none;" placeholder="请选择其他附件">
+									      		<button type="button" class="btn btn-primary btn-sm col-sm-2" id="upfpfj">上传</button>
+									    	</div>
+									  	</div>
+									  	<div class="form-group">
+									    	<label for="qtfj" class="col-sm-4 control-label">其他附件</label>
+									    	<div class="col-sm-7">
+									    		<div id="qtfjCont"></div>
+									      		<input type="file" class="form-control" id="qtfj" name="qtfj" style="display:none;" placeholder="请选择其他附件">
+									      		<button type="button" class="btn btn-primary btn-sm col-sm-2" id="upqtfj">上传</button>
+									    	</div>
+									  	</div>
+									  	<div class="form-group">
+									    	<label for="remark" class="col-sm-4 control-label">备注</label>
+									    	<div class="col-sm-7">
+									      		<textarea class="form-control" rows="3" name="remark" id="remark"></textarea>
+									    	</div>
+									  	</div>
+									  	<div class="form-group">
+									  		<button type="button" class="btn btn-primary btn-lg col-sm-4 col-md-offset-2" id="prevTwo">上一步</button>
+									  		<button type="button" class="btn btn-primary btn-lg col-sm-4 col-md-offset-2" id="yszSubmit">提交</button>
+									  	</div>
+									</form>
+                					<div style="clear:both"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div style="clear: both;"></div>
+				</div>
+			</div>
+		</div>
+		<div id="foot"></div>
+	</div>
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+	    <div class="modal-dialog" style="width:1015px;">
+	        <div class="modal-content">
+	            <div class="modal-header">
+	                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	                <h4 class="modal-title" id="myModalLabel">选择发票</h4>
+	            </div>
+	            <div class="modal-body">
+	            	<iframe style="zoom: 0.6;" height="700" src="" frameBorder="0" width="99.6%" id="iframeIn"></iframe>  
+	            </div>
+	            <div class="modal-footer" id="saveFooter">
+	                <button type="button" class="btn btn-primary" data-dismiss="modal" aria-hidden="true">关闭</button>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+	<div id="hbg" style="display:none;"></div>
+	<div class="declaration" id="joinDialog" style="display:none;">
+    	<div class="declaration_okly">
+        	<div class="declaration_okly1" style="margin-top: 30px;">
+            	<div class="declaration_okly1_vseb left">企业信用承诺联盟及数据授权协议</div>
+                <div class="declaration_okly1_vseb1 right"><a href="javascript:;" onclick="$('#hbg').hide();$('#joinDialog').hide();$('body').removeClass('modal-open');"><span class="fa fa-times"></span></a></div>
+            </div>
+            <div class="declaration_okly2">	
+            <p>
+               		<span class="ahui_sle">企业信用承诺联盟及数据授权协议</span>
+
+<strong class="ahui_slo">尊敬的用户：</strong></br>
+
+为了维护您的合法权益，您在点击同意本企业信用承诺联盟及数据授权协议按钮前，请仔细阅读协议全部内容，知悉您在协议中的权利和义务。<strong class="ahui_slo">您需特别关注和充分理解粗体字的内容。</strong></br>
+<strong class="ahui_slo">一、相关定义</strong></br>
+1、本协议是指爱信诺征信有限公司与用户之间就使用“爱税融平台”服务及有关数据授权所签订的法律协议。</br>
+2、“用户”是指接受和使用爱税融平台提供服务的企业法人。如无特别规定，本协议内写明“您”的地方即为本协议的用户。</br>
+3、“本公司”是指爱信诺征信有限公司。</br>
+4、“爱税融平台”是由本公司所有、为中小微企业提供融资服务的互联网平台。</br>
+5、“企业信用承诺联盟”（下称联盟）是由本公司发起的企业自主信用管理组织，旨在为联盟成员提供多层次、多形式的信用服务，为联盟成员及其上下游企业积极拓展融资渠道。</br>
+<strong class="ahui_slo">二、用户承诺</strong></br>
+    为有效保障您的合法权益，您阅读、理解并承诺以下事项：</br>
+1、在点击同意本协议前，您是已经在工商行政管理机关登记注册并有效存续的企业法人。</br>
+2、只要您点击同意本协议按钮，即视为接受了本协议并愿意遵守本协议约定。</br>
+3、本公司及下属“爱税融平台”有权根据需要适时地修改本协议相关内容，并在“爱税融平台”上公示。若您继续使用“爱税融平台”服务，即表示您充分阅读、理解并接受新修订的协议。</br>
+<strong class="ahui_slo">三、联盟成员承诺</strong></br>
+    <strong class="ahui_slo">您承诺加入联盟并履行如下成员义务：</strong></br>
+1、诚实守信，合法经营，共同致力于将联盟打造成中国最大的诚信企业家园；</br>
+2、接受联盟提供的免费信用调查，建立信用档案，配合提供必要的企业信用数据，并保证提供企业资料的真实性、完整性和及时性；</br>
+3、妥善保管您在“爱税融平台”上的身份认证信息，发现遗失、盗用等异常现象及时与“爱税融平台”客服人员联系；</br>
+4、接受社会公开监督，积极响应联盟收到的信用投诉，维护、提升信用评价。</br>
+<strong class="ahui_slo">四、数据授权内容</strong></br>
+    为有效保障您的合法权益，您理解、同意对本公司进行如下授权：</br>
+<strong class="ahui_sll">1、授权事项</strong></br>
+（1）<strong class="ahui_sll">本公司有权在遵守国家法律法规的前提下,采集您的信用信息（包括但不限于基本信息、经营信息、财务信息、发票信息、借贷信息、税务信息、工商信息、司法警示信息等）。您同意通过安装爱税宝软件或其他方式，由本公司进行信用信息的采集。 </strong></br>
+（2）<strong class="ahui_sll">本公司有权依照自行设立的模型、模式、格式、规则、流程等对您的信用信息进行保存、整理、分析、加工等处理操作，并生成信用报告。</strong></br>
+（3）<strong class="ahui_sll">本公司有权将您的信用信息以包括但不限于信用报告等形式提供给您通过“爱税融”平台申请融资产品或服务的金融机构及该金融机构指定的其他方（以下统称金融机构），用于有关信贷审批和贷后管理等用途。</strong></br>
+（4）<strong class="ahui_sll">在经过您授权的前提下，本公司有权将您的信用信息以包括但不限于信用报告等形式提供给特定的第三方。</strong></br>
+<strong class="ahui_sll">2、授权期限</strong></br>
+（1）本协议项下授权的起始日期为您点击同意接受本协议之日。</br>
+（2）<strong class="ahui_sll">如果您要终止本协议，您应提前一个月书面通知本公司；如果您已安装爱税宝软件， 则您还须同时卸载爱税宝软件。</strong></br>
+（3）<strong class="ahui_sll">对于因您终止本协议而对申请、使用相关金融机构产品及服务产生的任何不利影响及损失，由您自行承担，本公司不承担任何责任。如果您与金融机构之间的借贷关系、结算关系等尚未终止，则您须待有关的借贷关系、结算关系等终止后方可终止本协议。</strong></br>
+<strong class="ahui_sll">五、其他约定</strong></br>
+1、本公司是“爱税融平台”的所有者，拥有该网站内容及资源的著作权等合法权利，受国家法律保护。</br>
+<strong class="ahui_sll">2、您充分理解并知悉：您的信用信息被采集、保存、整理、分析、加工以及被提供和使用的风险，这些风险包括但不限于您的信用信息对您的信用评级等可能产生的不利影响，您的信用信息被本公司依法提供给金融机构可能产生的不利影响。您充分理解并知悉：金融机构将独立对您的申请做出判断并决定是否审批通过，并不仅仅依赖于您授权本公司所提供的信用信息。</strong></br>
+3、对于需要爱税宝软件之产品或服务，为保证您能正常使用金融机构的产品及服务，您应安装并持续使用爱税宝软件。如您擅自卸载爱税宝软件，则对于因此造成的金融机构终止借贷关系等任何不利影响及损失，均由您自行承担，本公司不承担任何责任。</br>
+4、本协议的订立、执行和解释及争议的解决均应适用在中华人民共和国大陆地区适用之有效法律。</br>
+5、本协议履行过程中发生的争议，双方应友好协商，协商不成时，任何一方均可向本公司所在地有管辖权的人民法院起诉。</br>
+6、本公司保留对本协议及所有规则的最终解释权。</br>
+				</p>
+            </div>
+        </div>
+       	<div class="ixinnuo_zcxy_lil">
+                <!-- div class="input_lilc3 left" style="position:relative;">
+                 <input name="accept" type="checkbox" id="form1_accept" style="margin-bottom: 6px;" class="acc-check"/>
+                 <span class="acc-text">&nbsp;&nbsp;同意</span>
+                 <span class="acc-doc"> <a href="<%=path %>download/aisino_contract.docx" target="_blank">《爱信诺征信金融服务三方协议》</a></span>
+                </div-->
+           </div>
+           <div style="clear:both;"></div>
+           <div class="declaration_okly8">
+               <a href="javascript:;" onclick="apply.closeDialogh();"><span class="declaration_okly10 right" style="margin-right:100px;background:#337ab7;">确&nbsp;认</span></a>
+           </div>
+           <div style="margin-top: 20px;"></div>
+            
+ 	</div>
+	<script type="text/javascript" src='../../js/libs/jquery-1.8.3.min.js'></script>
+	<script type="text/javascript" src="../../js/serve.js"></script>
+	<!-- time -->
+	<script type="text/javascript" src='../../js/libs/My97DatePicker/WdatePicker.js'></script>
+	<!-- //格式化插件 -->
+	<script src='../../js/libs/util.js'></script>
+	<script type="text/javascript" src="../../js/apply/pjzy.js"></script>
+	<script id="rz-template" type="text/x-handlebars-template">
+	{{#each this}}
+  		<tr>
+			<td>{{invoiceNum}}</td>
+			<td>{{invoiceCode}}</td>
+			<td>{{invoiceSum}}</td>
+			<td>{{invoiceDate}}</td>
+			<td>{{productName}}</td>
+			<td>{{matchRatio}}</td>
+		</tr>
+	{{/each}}
+	</script>
+</body>
+</html>

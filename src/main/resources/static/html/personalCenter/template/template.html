@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="keywords" content="去核心化供应链融资平台">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+	<link rel='stylesheet' href='/static/css/reset.css'>
+	<link rel="stylesheet" href="/static/js/libs/bootstrap/bootstrap.css" />
+	<link rel='stylesheet' href='../../../css/style.css'>
+	<link rel='stylesheet' href='../../../css/common.css'>
+	<title>个人中心</title>
+	<style type="text/css">
+	.w-e-icon-happy:before{
+		    content: "\模板" !important;
+	}
+	.w-e-text-container .w-e-panel-container .w-e-emoticon-container .w-e-item{
+		display: block !important;
+		font-size: 16px !important;
+	}
+	</style>
+</head>
+<body>
+	<div class="wrap index">
+		<div id="head"></div>
+		<div id="navs"></div>
+		<div class="main bg-f5">	
+			<div class="subject col-md-12 col-lg-8">
+				<div id="menu"></div>
+				<div class="subject-rt right">
+					<div class="title bot f16">
+				          <h2 class="left" id="titleTem">模板管理</h2>
+				          <div class="right">
+				          	<a href="javascript:;" class="add-btn del-icon" id="add">新增<i class="fa fa-plus"></i></a>
+				          	<a href="javascript:;" class="add-btn del-icon" id="edit">修改<i class="fa fa-pencil-square-o"></i></a>
+				          	<a href="javascript:;" class="add-btn del-icon" id="del">删除<i class="fa fa-trash"></i></a>	
+				          </div>
+				    </div>
+				    <div class="newly-main" id="subject">
+				    	<div class="newly-bot">
+				    		<div class="table-responsive">
+					    		<table class="datatable table table-striped table-bordered table-hover">
+								  	<thead>
+								  		<th></th>
+								  		<th>模板名称</th>
+								  		<th>模板分类</th>
+								  		<th>上传时间</th>
+								  	</thead>
+								  	<tbody id="rz-table">
+								  		<!-- <tr>
+								  			<td>1</td><td>爱信诺征信有限公司</td><td>132465789</td><td>企业</td><td>182.182.182</td><td>--</td><td>--</td><td>2018-02-04 14:00:00</td>
+								  		</tr> -->
+								  	</tbody>
+								</table>
+							</div>
+				    		<div class="page hd" id="pagination">
+				    			<ul class="pagination"></ul>
+				    			<div class="right" id="pageShow" style="margin: 22px 0;line-height:20px;margin-left:5px;display:none;">
+				    				<span>共<i id="total" style="font-style:normal"></i>条,</span>
+				    				<span>到第<input type="number" style="width:35px;text-align:center;" id="topage"/>页</span>
+				    				<button class="btn btn-primary btn-sm" onClick="template.showPage()">跳转</button>
+				    			</div>
+				    		</div>
+				    	</div>
+					</div>
+				</div>
+			
+			</div>
+		</div>
+		<div id="foot"></div>
+	</div>
+	<div class="modal fade" id="templateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+	    <div class="modal-dialog" style="width:1015px;">
+	        <div class="modal-content">
+	            <div class="modal-header">
+	                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	                <h4 class="modal-title" id="myModalLabel">模板新增</h4>
+	            </div>
+	            <div class="modal-body">
+	            	<form class="" id="addTemplate" enctype="multipart/form-data">
+					  	<div class="form-group h-35">
+					    	<label for="name" class="col-sm-2 control-label"><span class="lab-tip">*</span>机构名称：</label>
+					    	<div class="col-sm-6">
+					      		<input type="text" class="form-control" id="orgName" name="orgName" placeholder="请输入机构名称" readonly="readonly">
+					    	</div>
+					  	</div>
+					  	<div class="form-group h-35">
+					    	<label for="name" class="col-sm-2 control-label"><span class="lab-tip">*</span>模板类别：</label>
+						    	<div class="col-sm-6">
+						      		<select class="form-control" id="templateTypeList" name="templateTypeList"/></select>
+						    	</div>
+					  	</div>
+					  	<div class="form-group h-35">
+					    	<label for="name" class="col-sm-2 control-label"><span class="lab-tip">*</span>模板名称：</label>
+						    	<div class="col-sm-6">
+						      		<input type="text" class="form-control" id="templateName" name="templateName">
+						    	</div>
+					  	</div>
+					  	<div class="form-group">
+					    	<label for="name" class="col-sm-2 control-label"><span class="lab-tip">*</span>模板变量：</label>
+						    	<div class="col-sm-10" id="variableArea">
+						    		<span class="col-red">与乙方相关的信息请选择下方模板中的模板变量，比方说：企业名称、税号、法人姓名、企业盖章、签署日期等</span>
+						    	</div>
+					  	</div>
+						<div style="clear:both;"></div>
+					  	<!--<div class="form-group h-35">
+					  
+					    	<label for="idCode" class="col-sm-3 control-label"><span class="lab-tip">*</span>模板附件：</label>
+					    	<div class="col-sm-8">
+					      		<input type="text" class="form-control" id="attach" name="attach" placeholder="请选择机模板附件">
+					      		<input type="file" id="file" name="file" style="display:none;" readonly="readonly">
+					    	</div>
+					      	<button type="button" class="btn btn-primary cxbtn col-sm-2 mtop-20" id = "choose">选择文件</button> 
+					  	</div>-->
+					  	<div id="editor" style="width:990px">
+				    		
+				    	</div>
+					</form>
+					<div style="clear:both;"></div>
+	            </div>
+	            <div class="modal-footer" id="saveFooter">
+	                <button type="button" class="btn btn-primary" id ="save" name="save">保存</button>
+	            </div>
+	            <div class="modal-footer" id="editFooter" style="display:none">
+	                <button type="button" class="btn btn-primary" id ="update" name="update">保存</button>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+	<script type="text/javascript" src='/static/js/libs/jquery-1.8.3.min.js'></script>
+	<script type="text/javascript" src='/static/js/libs/wangEditor/wangEditor.js'></script>
+	<!-- time -->
+	<script type="text/javascript" src='../../../js/libs/My97DatePicker/WdatePicker.js'></script>
+	<script type="text/javascript" src="../../../js/serve.js"></script>
+	<script type="text/javascript" src="../../../js/personalCenter/template/template.js"></script>
+	<script type="text/javascript">
+	 var E = window.wangEditor
+     var editor = new E('#editor')
+		// 自定义菜单配置
+    	editor.customConfig.menus = [
+        	'head',
+        	'bold',
+        	'italic',
+        	'fontSize',  // 字号
+            'fontName',  // 字体
+            'italic',  // 斜体
+            'underline',  // 下划线
+            'strikeThrough',  // 删除线
+            'foreColor',  // 文字颜色
+            'backColor',  // 背景颜色
+            'justify',  // 对齐方式
+            'table',  // 表格
+            'undo',  // 撤销
+            'redo',  // 重复
+            'emoticon'// 表情
+    	]
+		
+
+     // 或者 var editor = new E( document.getElementById('editor') )
+     //editor.txt.html('<p>请录入模板资料</p>');
+	
+
+	</script>
+	<script id="rz-template" type="text/x-handlebars-template">
+	{{#each this}}
+  		<tr>
+			<td><label><input type="checkbox" value="{{id}}" name="check"></label></td>
+			<td>{{templateName}}</td>
+			<td>{{templateType}}</td>
+			<td>{{istTime}}</td>
+		</tr>
+	{{/each}}
+	</script>
+</body>
+</html>

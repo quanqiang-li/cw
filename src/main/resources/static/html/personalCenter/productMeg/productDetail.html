@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="keywords" content="去核心化供应链融资平台">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+	<link rel='stylesheet' href='../../../css/reset.css'>
+	<link rel="stylesheet" href="../../../js/libs/bootstrap/bootstrap.css" />
+	<link rel="stylesheet" href="../../../js/libs/bootstrap/bootstrap-switch.css" />
+	<link rel='stylesheet' href='../../../css/style.css'>
+	<link rel='stylesheet' href='../../../css/common.css'>
+	<title>个人中心</title>
+</head>
+<body>
+	<div class="wrap index">
+		<div id="head"></div>
+		<div id="navs"></div>
+		<div class="main bg-f5">	
+			<div class="subject col-md-12 col-lg-8">
+				<div id="menu"></div>
+				<div class="subject-rt right">
+					<div class="title bot f16">
+				        <h2 class="left" id="titleTem">产品详情</h2>
+				        <div class="right">
+				            <!-- <a href="javascript:;" class="add-btn hint-1 add-icon" id="add">新增产品</a> -->
+				        </div>
+				    </div>
+				    <div class="newly-main" id="subject">
+						<h2 class="orgtitle">操作</h2>
+				    	<div class="searchBtn">
+				    		<div class="switch switch-large" data-on="info" data-off="success" >
+							    <input type="checkbox" name="status" checked />
+							</div>
+							<!-- <button type="button" class="btn btn-primary cxbtn w-145" onClick="">删除</button> -->
+				    	</div>
+				    	<div class="orgtitle">
+				    		<h2 class="left">产品基本信息</h2>
+							<span class="right edit cuor" onclick="product.toInfo()">编辑<i class="fa fa-angle-right"></i></span>
+				    	</div>
+				    	<div class="orgCont">
+				    		<ul id="product"></ul>
+				    		<div class="clear"></div>
+				    	</div>
+				    	<div class="orgtitle">
+				    		<h2 class="left">产品覆盖区域</h2>
+							<span class="right edit cuor" onclick="product.toRegion()">编辑<i class="fa fa-angle-right"></i></span>
+				    	</div>
+				    	<div class="orgCont arealist" id="area">
+				    	</div>
+				    	<div class="orgtitle">
+				    		<h2 class="left">产品详情</h2>
+							<span class="right edit cuor" onclick="product.toDetails()">编辑<i class="fa fa-angle-right"></i></span>
+				    	</div>
+				    	<div class="orgCont" id="elementOne">
+				    		
+				    	</div>
+				    	<div class="orgtitle">
+				    		<h2 class="left">申请资料</h2>
+							<span class="right edit cuor" onclick="product.toMeans()">编辑<i class="fa fa-angle-right"></i></span>
+				    	</div>
+				    	<div class="orgCont" id="elementTwo">
+				    		
+				    	</div>
+				    	<div class="orgtitle">
+				    		<h2 class="left">贷款协议</h2>
+							<span class="right edit cuor" onclick="product.toAgree()">编辑<i class="fa fa-angle-right"></i></span>
+				    	</div>	
+				    	<div class="orgCont" id="elementThree">
+				    		
+				    	</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="foot"></div>
+	</div>
+	<script type="text/javascript" src='/static/js/libs/jquery-1.8.3.min.js'></script>
+	<!-- //格式化插件 -->
+	<script src='/static/js/libs/util.js'></script>
+	<script type="text/javascript" src="../../../js/serve.js"></script>
+	<script type="text/javascript" src="../../../js/libs/bootstrap/bootstrap-switch.js"></script>
+	<script type="text/javascript" src="../../../js/personalCenter/product/productDetail.js"></script>
+	<script id="list-template" type="text/x-handlebars-template">
+  		<li><span>产品：</span>{{productName}}</li>
+		<li><span>合作机构：</span>{{orgName}}</li>
+  		<li><span>融资利率：</span>{{loanRate}}</li>
+		<li><span>融资额度（万元）：</span>{{loanAmount}}</li>
+		<li><span>融资期限（月）：</span>{{loanTerm}}</li>
+		<li><span>还款方式：</span>{{repayWay}}</li>
+		<li><span>产品类型：</span>{{productType}}</li>
+		<li><span>产品标识：</span>{{productFlag}}</li>
+		<li><span>风控模型：</span>{{templates}}</li>
+  		<li style="width:900px;"><span>产品说明：</span><em>{{productDesc}}</em></li>
+	</script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="keywords" content="去核心化供应链融资平台">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+	<link rel='stylesheet' href='/static/css/reset.css'>
+	<link rel="stylesheet" href="/static/js/libs/bootstrap/bootstrap.css" />
+	<link rel='stylesheet' href='../../../css/style.css'>
+	<link rel='stylesheet' href='../../../css/common.css'>
+	<title>个人中心</title>
+</head>
+<body>
+	<div class="wrap index">
+		<div id="head"></div>
+		<div id="navs"></div>
+		<div class="main bg-f5">	
+			<div class="subject col-md-12 col-lg-8">
+				<div id="menu"></div>
+				<div class="subject-rt right">
+					<div class="title bot f16">
+				          <h2 class="left" id="titleTem">供应链节点管理</h2>
+				          <div class="right">
+				          	<a href="javascript:;" class="add-btn del-icon" id="add">新增<i class="fa fa-plus"></i></a>
+				          	<a href="javascript:;" class="add-btn del-icon" id="edit">修改<i class="fa fa-pencil-square-o"></i></a>	
+				          </div>
+				    </div>
+				    <div class="newly-main" id="subject">
+				    	<div class="form-group add-group h-35">
+	                        <label class="control-label left">公司名称：</label>
+	                        <div class="col-sm-3">
+	                             <input class="form-control" id="orgName"  placeholder="请输入公司名称"/>
+	                        </div>
+                        	<button type="button" class="btn btn-primary cxbtn left" id="query">查询</button>
+	                    </div> 
+				    	<div style="clear:both;"></div>
+				    	<div class="newly-bot">
+				    		<div class="table-responsive">
+					    		<table class="datatable table table-striped table-bordered table-hover">
+								  	<thead>
+								  		<th></th>
+								  		<th>机构名称</th>
+								  		<th>机构代码</th>
+								  		<th>机构账号</th>
+								  		<th>机构密码</th>
+								  		<th>机构地址</th>
+								  	</thead>
+								  	<tbody id="rz-table">
+								  		<!-- <tr>
+								  			<td>1</td><td>爱信诺征信有限公司</td><td>132465789</td><td>企业</td><td>182.182.182</td><td>--</td><td>--</td><td>2018-02-04 14:00:00</td>
+								  		</tr> -->
+								  	</tbody>
+								</table>
+							</div>
+				    		<div class="page hd" id="pagination">
+				    			<ul class="pagination"></ul>
+				    			<div class="right" id="pageShow" style="margin: 22px 0;line-height:20px;margin-left:5px;display:none;">
+				    				<span>共<i id="total" style="font-style:normal"></i>条,</span>
+				    				<span>到第<input type="number" style="width:35px;text-align:center;" id="topage"/>页</span>
+				    				<button class="btn btn-primary btn-sm" onClick="gylNode.showPage()">跳转</button>
+				    			</div>
+				    		</div>
+				    	</div>
+					</div>
+				</div>
+			
+			</div>
+		</div>
+		<div id="foot"></div>
+	</div>
+	<div class="modal fade" id="gylNodeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	    <div class="modal-dialog">
+	        <div class="modal-content">
+	            <div class="modal-header">
+	                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	                <h4 class="modal-title" id="myModalLabel">供应链节点新增</h4>
+	            </div>
+	            <div class="modal-body">
+	            	<form class="" id="addGylNode">
+					  	<div class="form-group h-35">
+					    	<label for="name" class="col-sm-3 control-label"><span class="lab-tip">*</span>机构名称：</label>
+					    	<div class="col-sm-8">
+					      		<input type="text" class="form-control" id="orgCode" name="orgName" placeholder="请输入机构名称">
+					    	</div>
+					    	<input type="text" class="form-control" id="orgCodeHidden" style="display:none">
+					  	</div>
+					  	<div class="form-group h-35">
+					    	<label for="name" class="col-sm-3 control-label"><span class="lab-tip">*</span>机构账号：</label>
+					    	<div class="col-sm-8">
+					      		<input type="text" class="form-control" id="account" name="account" placeholder="请输入机构账号">
+					    	</div>
+					  	</div>
+					  	<div class="form-group h-35">
+					    	<label for="name" class="col-sm-3 control-label"><span class="lab-tip">*</span>机构密码：</label>
+					    	<div class="col-sm-8">
+					      		<input type="text" class="form-control" id="password" name="password" placeholder="请输入机构密码">
+					    	</div>
+					  	</div>
+					  	<div class="form-group h-35">
+					    	<label for="name" class="col-sm-3 control-label"><span class="lab-tip">*</span>机构地址：</label>
+					    	<div class="col-sm-8">
+					      		<input type="text" class="form-control" id="url" name="url" placeholder="请输入机构地址">
+					    	</div>
+					  	</div>
+					</form>
+					<div style="clear:both;"></div>
+	            </div>
+	            <div class="modal-footer" id="saveFoot">
+	                <button type="button" class="btn btn-primary" id ="save" name = "save">保存</button>
+	                <button type="button" class="btn btn-primary" id="testConn">测试连接</button>		
+	            </div>
+	            <div class="modal-footer" style="display: none" id="editFoot">
+	                <button type="button" class="btn btn-primary" id ="update" name = "update">修改</button>
+	                <button type="button" class="btn btn-primary" id="testConnUpdate">测试连接</button>			
+	            </div>
+	        </div>
+	    </div>
+	</div>
+	<script type="text/javascript" src='/static/js/libs/jquery-1.8.3.min.js'></script>
+	<!-- time -->
+	<script type="text/javascript" src='../../../js/libs/My97DatePicker/WdatePicker.js'></script>
+	<script type="text/javascript" src="../../../js/serve.js"></script>
+	<script type="text/javascript" src="../../../js/personalCenter/gylNode/gylNode.js"></script>
+	<script id="rz-template" type="text/x-handlebars-template">
+	{{#each this}}
+  		<tr>
+			<td><label><input type="checkbox" value="{{orgCode}}" name="check"></label></td>
+			<td>{{orgName}}</td>
+			<td>{{orgCode}}</td>
+			<td>{{orgBlockChainAccount}}</td>
+			<td>{{orgBlockChainPassword}}</td>
+			<td>{{orgBlockChainUrl}}</td>
+		</tr>
+	{{/each}}
+	</script>
+</body>
+</html>

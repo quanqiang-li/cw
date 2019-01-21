@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="keywords" content="去核心化供应链融资平台">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+	<link rel='stylesheet' href='../../../css/reset.css'>
+	<link rel="stylesheet" href="../../../js/libs/bootstrap/bootstrap.css" />
+	<link rel='stylesheet' href='../../../css/style.css'>
+	<link rel='stylesheet' href='../../../css/common.css'>
+	<title>个人中心</title>
+</head>
+<body>
+	<div class="wrap index">
+		<div id="head"></div>
+		<div id="navs"></div>
+		<div class="main bg-f5">	
+			<div class="subject col-md-12 col-lg-8">
+				<div id="menu"></div>
+				<div class="subject-rt right">
+					<div class="title bot f16">
+				        <h2 class="left" id="titleTem">产品列表</h2>
+				        <div class="right">
+				            <a href="productOrg.html" class="add-btn hint-1 add-icon" id="add">新增产品</a>
+				        </div>
+				    </div>
+				    <div class="newly-main" id="subject">
+				    	<div class="use-list" id="use-list">
+					    </div>
+				    	<div class="page hd" id="pagination">
+				    		<ul class="pagination"></ul>
+				    		<div class="right" id="pageShow" style="margin: 22px 0;line-height:20px;margin-left:5px;display:none;">
+			    				<span>共<i id="total" style="font-style:normal"></i>条,</span>
+			    				<span>到第<input type="number" style="width:35px;text-align:center;" id="topage"/>页</span>
+			    				<button class="btn btn-primary btn-sm" onClick="product.showPage()">跳转</button>
+			    			</div>
+				    	</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="foot"></div>
+	</div>
+	<script type="text/javascript" src='/static/js/libs/jquery-1.8.3.min.js'></script>
+	<script type="text/javascript" src="../../../js/serve.js"></script>
+	<script type="text/javascript" src="../../../js/personalCenter/product/productList.js"></script>
+	<script id="list-template" type="text/x-handlebars-template">
+	{{#each this}}
+  		<div class="list cuor" onClick="product.toDetails('{{id}}')">
+			<div class="prod-lf">
+				<dl>
+					<dt><img src="{{logo}}" alt=""></dt>
+					<dd>{{productName}}</dd>
+				</dl>
+			</div>
+			<div class="prod-rf">
+				<div class="prod-llf">
+					<h3>合作机构</h3>
+					<ul>
+						<li>{{orgName}}</li>
+					</ul>
+					<h3>覆盖地区</h3>
+					<ul>
+						<li class="bank-citys" title="{{openArea}}">{{openArea}}</li>
+					</ul>
+				</div>
+				<div class="prod-center">
+					<ul>
+						<li><span>融资额度：</span><b>{{loanAmount}}万</b></li>
+						<li><span>融资期限：</span><b>{{loanTerm}}个月</b></li>
+						<li><span>融资利率：</span><b>{{loanRate}}</b></li>
+					</ul>
+				</div>
+				<div class="prod-status rf">
+					{{statusName}}
+				</div>
+			</div>
+			<div style="clear: both;"></div>	
+    	</div>
+	{{/each}}
+	</script>
+</body>
+</html>

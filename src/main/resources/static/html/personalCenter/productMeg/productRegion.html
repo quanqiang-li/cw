@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="keywords" content="去核心化供应链融资平台">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+	<link rel='stylesheet' href='../../../css/reset.css'>
+	<link rel="stylesheet" href="../../../js/libs/bootstrap/bootstrap.css" />
+	<link rel='stylesheet' href='../../../css/style.css'>
+	<link rel='stylesheet' href='../../../css/common.css'>
+	<title>个人中心</title>
+</head>
+<body>
+	<div class="wrap index">
+		<div id="head"></div>
+		<div id="navs"></div>
+		<div class="main bg-f5">	
+			<div class="subject col-md-12 col-lg-8">
+				<div id="menu"></div>
+				<div class="subject-rt right">
+					<div class="title bot f16">
+				        <h2 class="left" id="titleTem">新建产品指南</h2>
+				        <div class="right">
+				        	<a href="javascript:;" class="back" onclick="javascript:history.back(-1);">返回></a>
+				        </div>
+				    </div>
+				    <div class="newly-main" id="subject">
+				    	<div>
+							<ul class="main_guide">
+								<li>选择合作银行<span class="flow-rf"></span></li>
+								<li class="flow"><span class="flow-lf"></span>选择产品覆盖区域<span class="flow-rf"></span></li>
+								<li><span class="flow-lf"></span>录入产品基本信息<span class="flow-rf"></span></li>
+								<li><span class="flow-lf"></span>录入产品详情<span class="flow-rf"></span></li>
+								<li><span class="flow-lf"></span>录入申请资料<span class="flow-rf"></span></li>
+								<li><span class="flow-lf"></span>录入贷款协议</li>
+							</ul>
+						</div>
+						<h2 class="orgtitle">选择产品覆盖区域</h2>
+				    	<div class="thr-linkage thr-box-12139">
+				            <div class="thr-header">请选择地区</div>
+				            <div class="thr-areas pd10">
+				                <h4 class="mtb5">您已选择</h4>
+				                <div class="select-area" id="select">
+				                	
+				                </div>
+				                <div style="clear:both;"></div>
+				            </div>
+							<div class="thr-list-area thr-list-1 fz14 mt10 fl" data-index="1">
+				                <ul id="province">
+				                    
+				                </ul>
+				            </div>            
+				            <div class="thr-check-box fz14">
+				                <dl class="pd10" id="city">
+				                	
+				                </dl>
+				            </div>
+				        </div>
+				        <div class="main_btn">
+							<div class="prodbtn next" onClick="region.toNext('cel')">下一步</div>
+							<div class="prodbtn save" onClick="region.toNext('save')">保存</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="foot"></div>
+	</div>
+	<script type="text/javascript" src='/static/js/libs/jquery-1.8.3.min.js'></script>
+	<script type="text/javascript" src="../../../js/serve.js"></script>
+	<!-- //格式化插件 -->
+	<script src='/static/js/libs/util.js'></script>
+	<script type="text/javascript" src="../../../js/personalCenter/product/region.js"></script>
+	<script id="province-template" type="text/x-handlebars-template">
+	<li class="fz16 thr-name">省/市</li>
+	{{#each this}}
+  		<li data-id="{{code}}" class="">{{name}}</li>
+	{{/each}}
+	</script>
+	<script id="city-template" type="text/x-handlebars-template">
+	{{#each cityList}}
+		<dd data-id="{{code}}" class="">{{name}}</dd>
+	{{/each}}
+	<br>
+	<dd data-id="{{proCode}}" data-route="{{proName}}" class="all">全部</dd>
+	</script>
+	<script id="select-template" type="text/x-handlebars-template">
+	{{#each this}}
+		{{#if all}}
+			<h3 class="thr-back-none" data-id="{{proCode}}">{{proName}}：</h3>	
+		{{else}}
+			<h3 class="thr-back-none">{{proName}}：</h3>
+		{{/if}}
+		
+		<dl class="fz14 thr-select-area">
+			{{#each selectCity}}
+	        	<dd data-id="{{code}}" class="on">{{name}}</dd>
+				
+			{{/each}}
+	  	</dl>
+	{{/each}}
+	</script>
+</body>
+</html>

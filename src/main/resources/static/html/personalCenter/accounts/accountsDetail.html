@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="keywords" content="去核心化供应链融资平台">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+	<link rel='stylesheet' href='../../../css/reset.css'>
+	<link rel="stylesheet" href="../../../js/libs/bootstrap/bootstrap.css" />
+	<link rel="stylesheet" href="../../../js/libs/bootstrap/bootstrap-switch.css" />
+	<link rel='stylesheet' href='../../../css/style.css'>
+	<link rel='stylesheet' href='../../../css/common.css'>
+	<title>个人中心</title>
+</head>
+<body>
+	<div class="wrap index">
+		<div id="head"></div>
+		<div id="navs"></div>
+		<div class="main bg-f5">	
+			<div class="subject col-md-12 col-lg-8">
+				<div id="menu"></div>
+				<div class="subject-rt right">
+					<div class="title bot f16">
+				        <h2 class="left" id="titleTem">待确认账款详情</h2>
+				        <div class="right">
+				            <a href="javascript:;" class="back" onclick="javascript:history.back(-1);">返回></a>
+				        </div>
+				    </div>
+				    <div class="newly-main" id="subject">
+						<!-- <h2 class="orgtitle">操作</h2>
+				    	<div class="searchBtn">
+				    		<button type="button" class="btn btn-primary cxbtn w-145" onClick="">审贷报告</button>
+				    		<button type="button" class="btn btn-primary cxbtn w-145" onClick="">授信报告</button>
+				    	</div> -->
+				    	<ul id="myTab" class="nav nav-tabs tab-nav">
+							<li class="active"><a href="#rzrtab" data-toggle="tab">融资人信息</a></li>
+							<li><a href="#rztab" data-toggle="tab">融资信息</a></li>
+							<li><a href="#ysztab" data-toggle="tab">应收账款信息</a></li>
+							<li class="qrzk" style="display:none;"><a href="#tzstab" data-toggle="tab">通知书</a></li>
+							<li class="qrzk" style="display:none;"><a href="#qrtab" data-toggle="tab">确认账款</a></li>
+						</ul>
+						
+						<div id="myTabContent" class="tab-content">
+							<!-- 融资人信息 -->
+							<!-- <div class="tab-pane fade in active orgCont" id="rzrtab">
+								<ul id="applyOne"></ul>
+				    			<div class="clear"></div>
+							</div>
+							<div class="tab-pane fade in orgCont" id="rztab">
+								<ul id="applyTwo"></ul>
+				    			<div class="clear"></div>
+							</div> -->
+							<div class="tab-pane fade in orgCont loanlist" id="ysztab">
+								<ul id="applytwo">
+									
+								</ul>
+								<div class="clear"></div>
+								<div class="form-group">
+									<label for="" class="col-sm-2 control-label">合同附件</label>
+									<div class="col-sm-10" id="htfj">
+										
+									</div>
+								</div>
+								<div class="clear"></div>
+								<div class="form-group">
+									<label for="opinion" class="col-sm-2 control-label">发票附件</label>
+									<div class="col-sm-10" id="fpfj">
+									</div>
+								</div>
+								<div class="clear"></div>
+								<div class="form-group">
+									<label for="opinion" class="col-sm-2 control-label">其他附件</label>
+									<div class="col-sm-10" id="qtfj">
+									</div>
+								</div>
+							</div>
+							<div class="tab-pane fade in orgCont loanlist" id="tzstab">
+								<div class="form-group">
+									<label for="opinion" class="col-sm-3 control-label">应收账款转让通知书</label>
+									<div class="col-sm-9" id="yszzrs">
+									</div>
+								</div>
+													
+							</div>
+							<div class="tab-pane fade in loanlist orgCont" id="qrtab">
+								<form class="form-horizontal col-sm-8 col-md-offset-1 mtop-20" id="zsform">
+									<div class="form-group">
+										<label for="zscz" class="col-sm-4 control-label">操作</label>
+										<div class="col-sm-7">
+											<select type="text" class="form-control" id="zscz" name="zscz">
+												 <option value="">请选择</option>
+												 <option value="TZHTG">通过</option>
+												 <option value="TZHJJ">拒绝</option>
+											</select>
+										</div>
+									</div>
+									<div class="form-group">
+										 <label for="zsopinion" class="col-sm-4 control-label">批复</label>
+										 <div class="col-sm-7">
+										      <textarea class="form-control" rows="3" name="opinion" id="opinion"></textarea>
+										 </div>
+									</div>
+									<button type="button" class="btn btn-primary col-sm-3 col-md-offset-4" id="submit">提交</button>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="foot"></div>
+	</div>
+	<script type="text/javascript" src='/static/js/libs/jquery-1.8.3.min.js'></script>
+	<!-- //格式化插件 -->
+	<script src='/static/js/libs/util.js'></script>
+	<script type="text/javascript" src="../../../js/serve.js"></script>
+	<script type="text/javascript" src="../../../js/libs/bootstrap/bootstrap-switch.js"></script>
+	<script type="text/javascript" src="../../../js/personalCenter/accounts/accountsDetail.js"></script>
+	<script id="applyList-template" type="text/x-handlebars-template">
+		<div class="tab-pane fade in active orgCont loanlist" id="rzrtab">
+			<ul class="applylist">
+				<li><span>公司名称：</span>{{etrName}}</li>
+  				<li><span>统一社会信用代码：</span>{{unionCode}}</li>
+  				<li><span>融资联系人：</span>{{contactPerson}}</li>
+				<li><span>联系人电话：</span>{{contactMobile}}</li>
+			</ul>
+			<div class="clear"></div>
+		</div>
+		<div class="tab-pane fade in orgCont loanlist" id="rztab">
+			<ul class="applylist">
+  				<li><span>意向融资金额：</span>{{loanAmount}}元</li>
+				<li><span>意向融资期限：</span>{{loanTerm}}个月</li>
+				<li><span>意向融资利率上限：</span>{{loanRate}}</li>
+			    <li><span>还款方式：</span>{{repayWay}}</li>
+				<li><span>账号：</span>{{repayAccountNo}}</li>
+				<li><span>开户名：</span>{{repayAccountName}}</li>
+				<li><span>开户行：</span>{{repayAccountBank}}</li>
+				<li><span>融资需求描述：</span>{{loanDesc}}</li>
+			</ul>
+			<div class="clear"></div>
+		</div>
+	</script>
+	<script id="applyTwo-template" type="text/x-handlebars-template">
+		<li><span>购方名称：</span>{{buyerName}}</li>
+		<li><span>购方统一社会信用代码：</span>{{buyerUnionCode}}</li>
+  		<li><span>购方联系人：</span>{{buyerContactName}}</li>
+		<li><span>购方手机号：</span>{{buyerContactMobile}}</li>
+		<li><span>应收账款合同号：</span>{{contractNo}}</li>
+		<li><span>合同名称：</span>{{contractName}}</li>
+		<li><span>应收账款金额：</span>{{contractAmount}}</li>
+		<li><span>合同货物名称：</span>{{contractGoods}}</li>
+		<li><span>收款行：</span>{{receiveBankName}}</li>
+		<li><span>收款账号开户名：</span>{{receiveAccountName}}</li>
+		<li><span>收款账号：</span>{{receiveAccountNo}}</li>
+		<li><span>合同期限：</span>{{contractTerm}}</li>
+		<li><span>合同签署日期：</span>{{contractSignDate}}</li>
+		<li><span>合同付款日期：</span>{{contractPayDate}}</li>
+		<li><span>发票开具日期：</span>{{contractInvoiceDate}}</li>
+		<li><span>备注：</span>{{remark}}</li>
+	</script>
+	<script id="applyThree-template" type="text/x-handlebars-template">
+		<li><span>建议融资金额：</span>{{adviseLoanAmount}}元</li>
+		<li><span>建议融资期限：</span>{{adviseLoanTerm}}个月</li>
+		<li><span>建议融资利率上限：</span>{{adviseLoanRate}}</li>
+		<li><span>还款方式：</span>{{adviseRepayWay}}</li>
+		<li><span>操作：</span><em id="status"></em></li>
+		<li><span>审批：</span>{{opinion}}</li>
+	</script>
+	<script id="applyFive-template" type="text/x-handlebars-template">
+		<ul class="applylist">
+			<li><span>买方操作：</span><em id="purchaserstauts"></em></li>
+			<li><span>买方批复：</span>{{opinion}}</li>
+		</ul>
+	</script>
+</body>
+</html>

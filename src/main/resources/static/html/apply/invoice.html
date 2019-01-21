@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="keywords" content="去核心化供应链融资平台">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+	<link rel='stylesheet' href='/static/css/reset.css'>
+	<link rel="stylesheet" href="/static/js/libs/bootstrap/bootstrap.css" />
+	<link rel='stylesheet' href='../../../css/style.css'>
+	<link rel='stylesheet' href='../../../css/common.css'>
+</head>
+<body>
+	<div class="wrap index">
+			<div class="subject col-md-12">
+				<div class="">
+				    <div class="newly-main" id="subject" style="padding:0;">
+				    	<div class="newly-top">
+				    		<div class="form-group rizhi">
+	                          	<label class="control-label w-90">合同编号</label>
+	                          	<div class="col-sm-3">
+	                             	<input class="form-control" type="text" id="contractNo" readonly="readonly"/>
+	                          	</div>
+	                          	<label class="control-label w-90">销方名称</label>
+	                          	<div class="col-sm-3">
+	                             	<input class="form-control" type="text" id="reimburseCom" readonly="readonly"/>
+	                          	</div>
+	                       	</div>
+	                       	<div class="form-group">
+	                          	<label class="control-label w-90">购方名称</label>
+	                          	<div class="col-sm-3">
+	                             	<input class="form-control" type="text" id="purchaseCom" readonly="readonly"/>
+	                          	</div>
+	                          	<label class="control-label w-90">货物名称</label>
+	                          	<div class="col-sm-3">
+	                             	<input class="form-control" type="text" id="contractGoods" placeholder="请输入货物名称" readonly="readonly"/>
+	                          	</div>
+	                       	</div>
+	                       	<div class="form-group">
+	                          	<label class="control-label w-90">开票日期</label>
+	                          	<div class="col-sm-3">
+	                             	<input class="form-control" id="startDate" placeholder="请输入开始时间" onFocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd'})" autocomplete="off"/>
+	                           	</div>
+	                          	<label class="control-label w-90" style="text-align: center;">至</label>
+	                          	<div class="col-sm-3">
+	                           		<input class="form-control"  id="endDate" placeholder="请输入结束时间" onFocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM-dd'})" autocomplete="off">
+	                          	</div>
+	                          	<button type="button" class="btn btn-primary cxbtn right" onClick="invoice.search()">筛选</button>
+	                       	</div>
+				    		<div style="clear:both;"></div>
+				    	</div>
+				    	<div class="newly-bot"  style=" overflow-y:auto;width:925px; max-height:500px;">
+				    		<div class="table-responsive">
+					    		<table class="datatable table table-striped table-bordered table-hover">
+								  	<thead>
+								  		<th>发票号码</th>
+								  		<th>发票代码</th>
+								  		<th>开票金额</th>
+								  		<th>开票日期</th>
+								  		<th>商品名称</th>
+								  		<th>匹配度</th>
+								  	</thead>
+								  	<tbody id="rz-table">
+								  		<!-- <tr>
+								  			<td>1</td><td>爱信诺征信有限公司</td><td>132465789</td><td>企业</td><td>182.182.182</td><td>--</td><td>--</td><td>2018-02-04 14:00:00</td>
+								  		</tr> -->
+								  	</tbody>
+								</table>
+							</div>
+				    	</div>
+				    	<div>
+				    		<button type="button" class="btn btn-primary cxbtn right" onClick="invoice.select()">选入</button>
+	                    </div>
+					</div>
+				</div>
+			
+			</div>
+	</div>
+	<script type="text/javascript" src='/static/js/libs/jquery-1.8.3.min.js'></script>
+	<!-- time -->
+	<script type="text/javascript" src='../../../js/libs/My97DatePicker/WdatePicker.js'></script>
+	<script type="text/javascript" src="../../../js/serve.js"></script>
+	<script src="/static/js/libs/util.js"></script>
+	<script type="text/javascript" src="../../../js/apply/invoice.js"></script>
+	<script id="rz-template" type="text/x-handlebars-template">
+	{{#each this}}
+  		<tr>
+			<td><label><input type="checkbox" value="{{invoiceNum}}" name="check"></label>{{invoiceNum}}</td>
+			<td>{{invoiceCode}}</td>
+			<td>{{invoiceSum}}</td>
+			<td>{{invoiceDate}}</td>
+			<td>{{productName}}</td>
+			<td>{{matchRatio}}</td>
+		</tr>
+	{{/each}}
+	</script>
+</body>
+</html>
