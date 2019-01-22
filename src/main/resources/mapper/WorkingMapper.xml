@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ixinnuo.financial.dao.mysql.WorkingMapper">
+	<resultMap id="BaseResultMap" type="com.ixinnuo.financial.model.Working">
+		<!-- WARNING - @mbg.generated -->
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="year_month" property="yearMonth" jdbcType="VARCHAR" />
+		<result column="department_name" property="departmentName"
+			jdbcType="VARCHAR" />
+		<result column="employee_name" property="employeeName"
+			jdbcType="VARCHAR" />
+		<result column="project_name" property="projectName" jdbcType="VARCHAR" />
+		<result column="working_hours" property="workingHours"
+			jdbcType="DECIMAL" />
+		<result column="working_rate" property="workingRate" jdbcType="DECIMAL" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		<!-- WARNING - @mbg.generated -->
+		id, `year_month`, department_name, employee_name, project_name,
+		working_hours, working_rate
+	</sql>
+
+	<insert id="addWorkingBatch" parameterType="java.util.List">
+		insert into cw_working (`year_month`, department_name, employee_name,
+		project_name, working_rate) values
+		<foreach collection="list" item="item" separator=",">(#{item.yearMonth},#{item.departmentName},
+			#{item.employeeName},#{item.projectName},#{item.workingRate})
+		</foreach>
+	</insert>
+</mapper>

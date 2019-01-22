@@ -41,7 +41,7 @@ public class Application {
     @RequestMapping("/")
     String home() {
        //return "redirect:/swagger-ui.html";
-       return "redirect:/static/html/index.html";
+       return "redirect:/static/html/hello.html";
     }
     
 }

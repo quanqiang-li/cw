@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ixinnuo.financial.dao.mysql.PayrollMapper" >
+  <resultMap id="BaseResultMap" type="com.ixinnuo.financial.model.Payroll" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="year_month" property="yearMonth" jdbcType="VARCHAR" />
+    <result column="employee_name" property="employeeName" jdbcType="VARCHAR" />
+    <result column="accrued_pay" property="accruedPay" jdbcType="DECIMAL" />
+    <result column="pension" property="pension" jdbcType="DECIMAL" />
+    <result column="injury" property="injury" jdbcType="DECIMAL" />
+    <result column="lose_job" property="loseJob" jdbcType="DECIMAL" />
+    <result column="birth" property="birth" jdbcType="DECIMAL" />
+    <result column="medical" property="medical" jdbcType="DECIMAL" />
+    <result column="public_fund" property="publicFund" jdbcType="DECIMAL" />
+    <result column="depreciation" property="depreciation" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    id, year_month, employee_name, accrued_pay, pension, injury, lose_job, birth, medical, 
+    public_fund, depreciation
+  </sql>
+</mapper>

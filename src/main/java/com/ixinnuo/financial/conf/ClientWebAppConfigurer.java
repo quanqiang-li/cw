@@ -45,6 +45,7 @@ public class ClientWebAppConfigurer implements WebMvcConfigurer {
 				"/sms/**", // 短信验证码
 				"/user/login", // 登录
 				"/user/register", // 注册
+				"/importData/*", // 注册
 				"/user/retrievePassword", // 找回密码
 				"/dictionary/getDictionaryInfoByCondition", //字典表数据
 				"/static/**","/webjars/**");//静态资源

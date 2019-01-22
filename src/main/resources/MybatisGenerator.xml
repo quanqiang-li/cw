@@ -19,18 +19,18 @@
 			connectionURL="${druid.url}" userId="${druid.username}" password="${druid.password}">
 		</jdbcConnection>
 		<javaModelGenerator targetPackage="com.ixinnuo.financial.model"
-			targetProject="D:\eclipse-neon-workspace\gylrz\src\main\java">
+			targetProject="src/main/java">
 			<property name="enableSubPackages" value="true" />
 			<property name="trimStrings" value="true" />
 		</javaModelGenerator>
 		<sqlMapGenerator targetPackage="mapper"
-			targetProject="D:\eclipse-neon-workspace\gylrz\src\main\resources">
+			targetProject="src/main/resources">
 			<property name="enableSubPackages" value="true" />
 		</sqlMapGenerator>
 		<javaClientGenerator targetPackage="com.ixinnuo.financial.dao.mysql"
-			type="XMLMAPPER" targetProject="D:\eclipse-neon-workspace\gylrz\src\main\java">
+			type="XMLMAPPER" targetProject="src/main/java">
 		</javaClientGenerator>
-		<table tableName="f_apply_ticket" domainObjectName="ApplyTicket"
+		<table tableName="cw_working" domainObjectName="Working"
 			enableSelectByExample="false" enableUpdateByExample="false"
 			enableDeleteByExample="false" enableCountByExample="false">
 			<!--<property name="useActualColumnNames" value="true"></property> 不使用驼峰式，严格按字段名 -->

@@ -28,7 +28,7 @@ public class RiskTask {
 	@Autowired
 	private SpringContext springContext;
 
-	@Scheduled(cron = "${RiskTask.cron}")
+	//@Scheduled(cron = "${RiskTask.cron}")
 	public void run() {
 		logger.info("风控计算定时任务开始...");
 		Map<String, RiskCalc> beansOfType = springContext.getBeansOfType(RiskCalc.class);

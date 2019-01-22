@@ -185,6 +185,13 @@
 			<artifactId>commons-collections</artifactId>
 			<version>3.2.2</version>
 		</dependency>
+		<!-- 操作07版+的excel -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>4.0.1</version>
+		</dependency>
+
 	</dependencies>
 
 	<!-- maven profile 执行命令mvn clean package -P test -->
